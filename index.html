@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+       *{
+       box-sizing: border-box; 
+       }
+       body{
+        margin: 0;
+        font-family: 'Oswald',sans-serif;
+        background-color: lightgray; 
+       }
+       .cabecalho{
+        background-color: #E6E6E6;
+        border-bottom: solid 5px #5E17EB;
+        height: 80px;
+        box-sizing: content-box;
+       }
+
+       .logo{
+        display: inline-block;
+        height: 80px;
+        padding: 15px;
+       }
+       .logo img{
+        height: 100%;
+       }
+
+       .menu-toggle{
+        float: right;
+        padding: 10px 20px;
+        color: #5E17EB;
+        background-color: #E6E6E6;
+        border: 1px solid #5E17EB;
+        border-radius: 5px;
+        height: 40px;
+        margin: 20px 15px;
+       }
+
+       .menu{
+        display: inline-block;
+        vertical-align: top;
+        height: 80px;
+        padding: 25px;
+       }
+
+       .menu ul{
+        margin: 0;
+        padding: 0;
+       }
+
+       .menu li{
+        display: inline-block;
+        }
+
+        .cabecalho a{
+        text-decoration: none;
+        color: #5E17EB;
+        font-size: 1.3em;
+        font-weight: bold;
+        }
+
+        .menu a{
+            padding: 15px;
+        }
+
+        .autenticacao{
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+        .menu a:hover,
+        .menu a.selected{
+            background-color: #3B0F94;
+            color: #E6E6E6;
+            border-radius: 10px;
+        }
+
+        .botao{
+            border-radius: 20px;
+            padding: 10px 25px;
+            margin: 10px;
+            box-sizing: content-box;
+        }
+
+        #registrar{
+            color: #fff;
+            box-sizing: content-box;
+        }
+
+        .destaque{
+            background-color: #3B0F94;
+            color: #fff;
+        }
+
+        #registrar:hover,
+        .destaque:hover{
+            box-sizing: content-box;
+            background-color: red;
+            border:2px solid #3B0F94;
+        }
+
+        @media (min-width:679px){
+            .menu-toggle{
+                display: none;
+            }
+        }
+
+        @media (max-width:680px){
+            .menu{display: none;}
+        }
+
+        @media (max-width:910px){
+             .autenticacao{
+                display: none;
+             }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="logo.svg" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque" id="registrar">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        window.onhashchange = function(e){
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+            // Capturar o selected
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`)
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`)
+            // Adicionar o selected no antigo e no novo
+            oldLink && oldLink.classList.remove('selected')
+            newLink && newLink.classList.add('selected')
+
+        }
+    </script>
+</body>
+
+</html>
